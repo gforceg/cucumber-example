@@ -18,6 +18,7 @@ Feature: JSON to CSV
 		Given the file users.json contains
 		"""
 		[
+			{ "name": "Art", "jobId": 99 },
 			{ "name": "Jerry", "jobId": 27 },
 			{ "name": "Elaine", "jobId": 17 },
 			{ "name": "Kramer", "jobId": 7 },
@@ -28,6 +29,7 @@ Feature: JSON to CSV
 		Then the file users.csv should contain
 		"""
 		name,jobId
+		Art,99
 		Jerry,27
 		Elaine,17
 		Kramer,7
