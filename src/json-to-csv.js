@@ -5,6 +5,10 @@ import * as fs from 'fs'
 
 const argv = yargs.argv
 
+if (!argv._.length) {
+  process.stdout.write(`json-to-csv.js [FILE] <output directory>`)
+  process.exit(0)
+}
 const getArg = (index) => argv._[index] ? argv._[index] : ''
 
 const outdir = getArg(1)
@@ -48,7 +52,7 @@ function deserializeJson (json) {
   try {
     return JSON.parse(json)
   } catch (err) {
-    console.log('unable to parse file -- is this valid json?')
+    process.stderr.write('unable to parse file -- is this valid json?')
     process.exit(1)
   }
 }
@@ -57,7 +61,7 @@ function readFile (filePath) {
   try {
     return fs.readFileSync(filePath)
   } catch (err) {
-    console.log('unable to open the file -- does it exist? do you have permission?')
+    process.stderr.write('unable to open the file -- does it exist? do you have permission?')
     process.exit(1)
   }
 }
