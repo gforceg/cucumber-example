@@ -11,7 +11,7 @@ const outdir = getArg(1)
 const filePath = getArg(0)
 
 const outFile = `${path.parse(filePath).name}.csv`
-const buffer = jsonToCsv(fs.readFileSync(filePath))
+const buffer = jsonToCsv(readFile(filePath))
 fs.writeFileSync(path.join(outdir, outFile), buffer, 'utf-8')
 
 function jsonToCsv (json) {
@@ -45,11 +45,19 @@ function jsonToCsv (json) {
 }
 
 function deserializeJson (json) {
-  var obj
   try {
-    obj = JSON.parse(json)
+    return JSON.parse(json)
   } catch (err) {
-    throw new Error('unable to parse file -- is this valid json?')
+    console.log('unable to parse file -- is this valid json?')
+    process.exit(1)
   }
-  return obj
+}
+
+function readFile (filePath) {
+  try {
+    return fs.readFileSync(filePath)
+  } catch (err) {
+    console.log('unable to open the file -- does it exist? do you have permission?')
+    process.exit(1)
+  }
 }

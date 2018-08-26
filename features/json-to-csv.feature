@@ -54,3 +54,8 @@ Feature: JSON to CSV
         """
         When I run: json-to-csv.json invalid-json.json
         Then there should be an error message
+
+    Scenario: the user provides a file that does not exist
+        Given the file non-existent.json does not exist
+        When I run: json-to-csv.json non-existent.json
+        Then there should be an error message
