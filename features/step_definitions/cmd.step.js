@@ -4,5 +4,5 @@ import { When } from 'cucumber'
 
 When(/^I run: (json-to-csv.js) (users.json)$/, function (scriptName, fileName) {
   const filePath = path.join(this.filesRoot, fileName)
-  childProcess.spawnSync('node', [scriptName, fileName])
+  childProcess.spawnSync('node', [scriptName, fileName, this.filesRoot])
 })
