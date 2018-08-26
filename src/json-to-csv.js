@@ -8,11 +8,13 @@ const outdir = argv._[1]
 ? argv._[1]
 : ''
 
-// const filePath = argv._[0]
+const filePath = argv._[0]
+? argv._[0]
+: ''
 
-// import * as path from 'path'
-// csv = process.argv[1]
-fs.writeFileSync(path.join(outdir, 'users.csv'), `name,jobId
+const outFile = `${path.parse(filePath).name}.csv`
+
+fs.writeFileSync(path.join(outdir, outFile), `name,jobId
 Jerry,27
 Elaine,17
 Kramer,7
