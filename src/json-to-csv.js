@@ -4,13 +4,11 @@ import * as yargs from 'yargs'
 import * as fs from 'fs'
 
 const argv = yargs.argv
-const outdir = argv._[1]
-? argv._[1]
-: ''
 
-const filePath = argv._[0]
-? argv._[0]
-: ''
+const getArg = (index) => argv._[index] ? argv._[index] : ''
+
+const outdir = getArg(1)
+const filePath = getArg(0)
 
 const outFile = `${path.parse(filePath).name}.csv`
 
