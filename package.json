@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "cucumber": "^4.2.1",
@@ -16,7 +17,9 @@
     "eslint-plugin-standard": "^3.1.0"
   },
   "scripts": {
-    "test": "cucumber-js --require-module babel-register"
+    "test": "cucumber-js --require-module babel-register",
+    "start": "babel src/json-to-csv.js --out-file json-to-csv.js --watch",
+    "build": "babel src/json-to-csv.js --out-file json-to-csv.js"
   },
   "keywords": [],
   "author": "",

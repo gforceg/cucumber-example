@@ -24,7 +24,7 @@ Feature: JSON to CSV
 			{ "name": "George", "jobId": null }
 		]
 		"""
-		When I run json-to-csv.js
+		When I run: json-to-csv.js users.json
 		Then the file users.csv should contain
 		"""
 		name,jobId
