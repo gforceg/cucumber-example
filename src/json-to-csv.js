@@ -22,7 +22,7 @@ function jsonToCsv (json) {
   // 5. concat all of the rows and output them as multiline string
 
   // 1. deserialize the json
-  const jsonObj = JSON.parse(json)
+  const jsonObj = deserializeJson(json)
   let props = []
 
   // 2. get all object properties
@@ -42,4 +42,14 @@ function jsonToCsv (json) {
   })
   // 5. concat all of the rows and output them as multiline string
   return [].concat(headerBuffer, valueBuffers).join('\n')
+}
+
+function deserializeJson (json) {
+  var obj
+  try {
+    obj = JSON.parse(json)
+  } catch (err) {
+    throw new Error('unable to parse file -- is this valid json?')
+  }
+  return obj
 }
